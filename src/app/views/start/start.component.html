@@ -1,2 +1,8 @@
 <h2>Välkommen!</h2>
 <p>Detta är startsidan.</p>
+
+<ul>
+    <li *ngFor="let course of courselist">
+        {{ course.coursename }}
+    </li>
+</ul>
