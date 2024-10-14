@@ -1,8 +1,24 @@
 <h2>Ramschema</h2>
+<p>Nedan ses ramschemat. Sortera kolumnerna genom att klicka på rubriken. Använd sökrutan för att söka efter en specifik
+    kurs.</p>
+    
+<div id="searchbar">
+    <input type="search" name="search" id="search" [(ngModel)]="filter" placeholder="Sök i schemat">
+</div>
 
-
-<ul>
-    <li *ngFor="let course of courselist">
-        {{ course.coursename }}
-    </li>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th scope="col" sortable="code" (sort)="onSort($event)"><span></span>Kurskod</th>
+            <th scope="col" sortable="coursename" (sort)="onSort($event)"><span></span>Kursnamn</th>
+            <th scope="col" sortable="progression" (sort)="onSort($event)"><span></span>Progression</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of courseList | course:filter">
+            <td><a href="{{ course.syllabus }}">{{ course.code | uppercase }}</a></td>
+            <td>{{ course.coursename }}</td>
+            <td>{{ course.progression }}</td>
+        </tr>
+    </tbody>
+</table>
